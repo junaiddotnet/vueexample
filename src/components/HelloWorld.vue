@@ -4,7 +4,14 @@
   <p v-if="IsMorning">Good morning!</p>
   <p v-if="isAfterNoon">Good afternoon!</p>
   <p v-if="Isnight">Good evening!</p>
+  <p>{{isAfterNoon}} </p>
+  <p>{{hour}} </p>
+  <p> Page Open Sience {{Seconds}}</p>
+  <li v-for="dog in dogs">{{dog}}</li>
+  <button v-bind:disabled="buttonDisabled">Test button</button>
+    <button v-bind:disabled="buttonEnabled">Test button</button>
 
+  
     <h2>Essential LinksffS</h2>
     <ul>
       <li>
@@ -90,15 +97,25 @@
 <script>
 export default {
   name: 'HelloWorld',
-  hour: new Date().getHours(),
+    created() {
+    setInterval(() => {
+    this.Seconds++;
+}, 1000);
+},
 
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
       isAfterNoon:true,
       IsMorning:true,
-      Isnight:false
+      Isnight:false,
+      hour: new Date().getHours(),
+      dogs :['pit pull','german','husky'],
+      buttonDisabled:true,
+      buttonEnabled:false,
+      Seconds:1
     }
+
   }
 }
 </script>
